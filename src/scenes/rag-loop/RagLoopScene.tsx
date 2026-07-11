@@ -7,7 +7,7 @@ import AgentSpiral from "./AgentSpiral";
 function Label({ position, children }: { position: [number, number, number]; children: string }) {
   return (
     <Html position={position} center distanceFactor={6} occlude={false} zIndexRange={[1, 0]}>
-      <span className="whitespace-nowrap rounded-full border border-[var(--border)] bg-[var(--surface-glass)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-text-muted backdrop-blur">
+      <span className="hidden whitespace-nowrap rounded-full border border-[var(--border)] bg-[var(--surface-glass)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-text-muted backdrop-blur sm:inline-block">
         {children}
       </span>
     </Html>
