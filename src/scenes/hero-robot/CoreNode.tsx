@@ -50,15 +50,16 @@ export default function CoreNode() {
         <meshStandardMaterial
           color="#6ee7ff"
           emissive="#6ee7ff"
-          emissiveIntensity={0.8}
+          emissiveIntensity={1.4}
           roughness={0.2}
           metalness={0.1}
+          toneMapped={false}
         />
       </mesh>
       <pointLight color="#6ee7ff" intensity={2.2} distance={1.2} />
       <instancedMesh ref={particlesRef} args={[undefined, undefined, NODE_COUNT]}>
         <sphereGeometry args={[0.012, 8, 8]} />
-        <meshStandardMaterial color="#a78bfa" emissive="#a78bfa" emissiveIntensity={1.2} />
+        <meshStandardMaterial color="#a78bfa" emissive="#a78bfa" emissiveIntensity={1.8} toneMapped={false} />
       </instancedMesh>
     </group>
   );

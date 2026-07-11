@@ -59,7 +59,7 @@ export default function VectorGalaxy() {
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, COUNT]}>
       <sphereGeometry args={[0.018, 6, 6]} />
-      <meshStandardMaterial color="#6ee7ff" emissive="#6ee7ff" emissiveIntensity={0.9} />
+      <meshStandardMaterial color="#6ee7ff" emissive="#6ee7ff" emissiveIntensity={1.3} toneMapped={false} />
     </instancedMesh>
   );
 }

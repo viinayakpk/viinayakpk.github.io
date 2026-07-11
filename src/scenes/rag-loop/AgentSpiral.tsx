@@ -34,7 +34,7 @@ export default function AgentSpiral() {
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, NODE_COUNT]}>
       <torusGeometry args={[0.035, 0.014, 8, 12]} />
-      <meshStandardMaterial color="#ff9d5c" emissive="#ff9d5c" emissiveIntensity={0.7} roughness={0.4} />
+      <meshStandardMaterial color="#ff9d5c" emissive="#ff9d5c" emissiveIntensity={1.1} roughness={0.4} toneMapped={false} />
     </instancedMesh>
   );
 }

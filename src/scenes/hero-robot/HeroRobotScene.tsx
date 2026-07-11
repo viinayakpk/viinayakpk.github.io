@@ -1,4 +1,5 @@
-import { PerspectiveCamera } from "@react-three/drei";
+import { PerspectiveCamera, Environment, ContactShadows } from "@react-three/drei";
+import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import RobotModel from "./RobotModel";
 import { usePointerRef } from "./usePointerRef";
 
@@ -8,11 +9,21 @@ export default function HeroRobotScene() {
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0.3, 2.6]} fov={35} />
-      <ambientLight intensity={0.9} />
-      <directionalLight position={[2, 3, 2]} intensity={2.2} color="#f4f6ff" />
-      <directionalLight position={[-1.6, 1.2, -1.8]} intensity={1.6} color="#6ee7ff" />
-      <pointLight position={[-1.5, -0.5, 1]} intensity={0.8} color="#a78bfa" />
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[2, 3, 2]} intensity={1.8} color="#f4f6ff" />
+      <directionalLight position={[-1.6, 1.2, -1.8]} intensity={1.2} color="#6ee7ff" />
+      <pointLight position={[-1.5, -0.5, 1]} intensity={0.6} color="#a78bfa" />
+
+      <Environment preset="city" background={false} environmentIntensity={0.5} />
+
       <RobotModel pointer={pointer} />
+
+      <ContactShadows position={[0, -0.85, 0]} opacity={0.45} blur={2.6} far={1.4} scale={3} color="#000000" />
+
+      <EffectComposer multisampling={0}>
+        <Bloom luminanceThreshold={0.9} luminanceSmoothing={0.3} intensity={0.6} mipmapBlur />
+        <Vignette darkness={0.4} offset={0.25} />
+      </EffectComposer>
     </>
   );
 }

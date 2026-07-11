@@ -1,4 +1,5 @@
 import { PerspectiveCamera } from "@react-three/drei";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import PipelineNodes from "./PipelineNodes";
 import VectorGalaxy from "./VectorGalaxy";
 import RetrievalBeam from "./RetrievalBeam";
@@ -16,6 +17,10 @@ export default function RagLoopScene() {
       <VectorGalaxy />
       <RetrievalBeam />
       <AgentSpiral />
+
+      <EffectComposer multisampling={0}>
+        <Bloom luminanceThreshold={0.6} luminanceSmoothing={0.4} intensity={0.9} mipmapBlur />
+      </EffectComposer>
     </>
   );
 }
