@@ -5,4 +5,5 @@ dist-ssr
 stats.html
 .DS_Store
 public/llms.txt
+public/mediapipe/wasm
 *.tsbuildinfo

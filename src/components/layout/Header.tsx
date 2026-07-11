@@ -1,4 +1,5 @@
 import ThemeToggle from "../theme/ThemeToggle";
+import GestureToggle from "../gesture/GestureToggle";
 
 const NAV_LINKS = [
   { href: "#work", label: "Work" },
@@ -36,7 +37,10 @@ export default function Header() {
           ))}
         </nav>
 
-        <ThemeToggle />
+        <div className="flex items-center gap-2">
+          <GestureToggle />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
