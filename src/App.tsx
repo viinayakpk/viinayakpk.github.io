@@ -5,7 +5,7 @@ import Hero from "./components/hero/Hero";
 import TechIconField from "./components/tech-field/TechIconField";
 import Marquee from "./components/marquee/Marquee";
 import ProjectGrid from "./components/projects/ProjectGrid";
-import ExperienceTimeline from "./components/timeline/ExperienceTimeline";
+import RagLoopSection from "./components/rag-loop/RagLoopSection";
 
 export default function App() {
   return (
@@ -17,7 +17,7 @@ export default function App() {
         <TechIconField />
         <Marquee />
         <ProjectGrid />
-        <ExperienceTimeline />
+        <RagLoopSection />
       </main>
       <Footer />
     </>
