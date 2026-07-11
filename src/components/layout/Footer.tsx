@@ -1,3 +1,5 @@
+import { useTerminalStore } from "@/store/terminalStore";
+
 const FOOTER_LINKS = [
   { href: "https://linkedin.com/in/vinayakparoononkooloth", label: "LinkedIn" },
   { href: "https://github.com/viinayakpk", label: "GitHub" },
@@ -6,6 +8,8 @@ const FOOTER_LINKS = [
 ];
 
 export default function Footer() {
+  const openTerminal = useTerminalStore((state) => state.open);
+
   return (
     <footer className="flex justify-center px-4 pb-10 pt-16" aria-label="Site footer">
       <div className="flex flex-wrap items-center justify-center gap-1 rounded-full border border-[var(--border)] bg-[var(--surface-glass)] px-2 py-2 text-sm backdrop-blur-xl">
@@ -20,6 +24,14 @@ export default function Footer() {
             {link.label}
           </a>
         ))}
+        <button
+          type="button"
+          onClick={openTerminal}
+          className="rounded-full px-4 py-2 font-mono text-text-muted transition-colors hover:text-text"
+          title="Open the agent terminal (Ctrl+J)"
+        >
+          Terminal
+        </button>
       </div>
     </footer>
   );

@@ -6,6 +6,8 @@ import TechIconField from "./components/tech-field/TechIconField";
 import Marquee from "./components/marquee/Marquee";
 import ProjectGrid from "./components/projects/ProjectGrid";
 import RagLoopSection from "./components/rag-loop/RagLoopSection";
+import Terminal from "./components/terminal/Terminal";
+import TerminalHint from "./components/terminal/TerminalHint";
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
         <RagLoopSection />
       </main>
       <Footer />
+      <Terminal />
+      <TerminalHint />
     </>
   );
 }
