@@ -4,6 +4,7 @@ import PipelineNodes from "./PipelineNodes";
 import VectorGalaxy from "./VectorGalaxy";
 import RetrievalBeam from "./RetrievalBeam";
 import AgentSpiral from "./AgentSpiral";
+import SceneBackdrop from "@/scenes/shared/SceneBackdrop";
 
 export default function RagLoopScene() {
   return (
@@ -12,6 +13,8 @@ export default function RagLoopScene() {
       <ambientLight intensity={0.7} />
       <directionalLight position={[2, 3, 2]} intensity={1.8} color="#f4f6ff" />
       <directionalLight position={[-2, -1, -2]} intensity={1} color="#6ee7ff" />
+
+      <SceneBackdrop mode="flat" />
 
       <PipelineNodes />
       <VectorGalaxy />

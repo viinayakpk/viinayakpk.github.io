@@ -117,10 +117,9 @@ export default function RobotModel({ pointer }: RobotModelProps) {
         </group>
 
         {/* Neck joint */}
-        <mesh position={[0, 0.56, 0]}>
-          <cylinderGeometry args={[0.075, 0.085, 0.08, 12]} />
+        <RoundedBox args={[0.16, 0.08, 0.16]} radius={0.03} smoothness={3} position={[0, 0.56, 0]}>
           <meshStandardMaterial color={JOINT_COLOR} {...JOINT} />
-        </mesh>
+        </RoundedBox>
 
         {/* Chest / torso */}
         <group position={[0, 0.24, 0]}>
@@ -144,53 +143,44 @@ export default function RobotModel({ pointer }: RobotModelProps) {
         </group>
 
         {/* Hip joint */}
-        <mesh position={[0, -0.02, 0]}>
-          <cylinderGeometry args={[0.085, 0.085, 0.07, 12]} />
+        <RoundedBox args={[0.18, 0.07, 0.16]} radius={0.025} smoothness={3} position={[0, -0.02, 0]}>
           <meshStandardMaterial color={JOINT_COLOR} {...JOINT} />
-        </mesh>
+        </RoundedBox>
 
-        {/* Arms */}
+        {/* Arms - rounded rectangular blocks, not cylindrical capsules, to match the head/chest's firm boxy language */}
         <group ref={leftArm} position={[-0.29, 0.38, 0]}>
-          <mesh position={[0, -0.14, 0]}>
-            <capsuleGeometry args={[0.055, 0.22, 4, 8]} />
+          <RoundedBox args={[0.13, 0.24, 0.13]} radius={0.045} smoothness={3} position={[0, -0.13, 0]}>
             <meshStandardMaterial color={SHELL_COLOR} {...SHELL} />
-          </mesh>
-          <mesh position={[0, -0.27, 0]}>
-            <sphereGeometry args={[0.05, 12, 12]} />
+          </RoundedBox>
+          <RoundedBox args={[0.1, 0.08, 0.1]} radius={0.03} smoothness={3} position={[0, -0.27, 0]}>
             <meshStandardMaterial color={JOINT_COLOR} {...JOINT} />
-          </mesh>
+          </RoundedBox>
         </group>
         <group ref={rightArm} position={[0.29, 0.38, 0]}>
-          <mesh position={[0, -0.14, 0]}>
-            <capsuleGeometry args={[0.055, 0.22, 4, 8]} />
+          <RoundedBox args={[0.13, 0.24, 0.13]} radius={0.045} smoothness={3} position={[0, -0.13, 0]}>
             <meshStandardMaterial color={SHELL_COLOR} {...SHELL} />
-          </mesh>
-          <mesh position={[0, -0.27, 0]}>
-            <sphereGeometry args={[0.05, 12, 12]} />
+          </RoundedBox>
+          <RoundedBox args={[0.1, 0.08, 0.1]} radius={0.03} smoothness={3} position={[0, -0.27, 0]}>
             <meshStandardMaterial color={JOINT_COLOR} {...JOINT} />
-          </mesh>
+          </RoundedBox>
         </group>
 
-        {/* Legs - short and stubby for the chibi proportions */}
+        {/* Legs - short, stubby, rectangular blocks for the chibi proportions */}
         <group position={[-0.13, -0.16, 0]}>
-          <mesh>
-            <capsuleGeometry args={[0.06, 0.1, 4, 8]} />
+          <RoundedBox args={[0.13, 0.12, 0.13]} radius={0.04} smoothness={3}>
             <meshStandardMaterial color={SHELL_SHADOW} {...SHELL} />
-          </mesh>
-          <mesh position={[0, -0.09, 0.03]}>
-            <boxGeometry args={[0.12, 0.06, 0.18]} />
+          </RoundedBox>
+          <RoundedBox args={[0.12, 0.06, 0.18]} radius={0.02} smoothness={3} position={[0, -0.09, 0.03]}>
             <meshStandardMaterial color={JOINT_COLOR} {...JOINT} />
-          </mesh>
+          </RoundedBox>
         </group>
         <group position={[0.13, -0.16, 0]}>
-          <mesh>
-            <capsuleGeometry args={[0.06, 0.1, 4, 8]} />
+          <RoundedBox args={[0.13, 0.12, 0.13]} radius={0.04} smoothness={3}>
             <meshStandardMaterial color={SHELL_SHADOW} {...SHELL} />
-          </mesh>
-          <mesh position={[0, -0.09, 0.03]}>
-            <boxGeometry args={[0.12, 0.06, 0.18]} />
+          </RoundedBox>
+          <RoundedBox args={[0.12, 0.06, 0.18]} radius={0.02} smoothness={3} position={[0, -0.09, 0.03]}>
             <meshStandardMaterial color={JOINT_COLOR} {...JOINT} />
-          </mesh>
+          </RoundedBox>
         </group>
       </group>
     </group>
