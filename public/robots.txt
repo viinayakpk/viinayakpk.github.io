@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://viinayakpk.github.io/sitemap.xml
+Llms-txt: /llms.txt

@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-ssr
+*.local
+stats.html
+.DS_Store
+public/llms.txt
+*.tsbuildinfo
