@@ -27,7 +27,7 @@
 }
 
 :root {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
   --radius-lg: 1.25rem;
   --radius-md: 0.75rem;
