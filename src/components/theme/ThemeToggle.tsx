@@ -10,7 +10,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       aria-pressed={isDark}
-      className="grid size-10 shrink-0 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface-glass)] text-text backdrop-blur transition-colors hover:border-accent/60"
+      className="grid size-10 shrink-0 place-items-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface-glass)] text-text backdrop-blur transition-colors hover:border-accent/60"
     >
       {isDark ? (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">

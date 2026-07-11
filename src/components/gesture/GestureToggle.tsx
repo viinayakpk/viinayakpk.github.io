@@ -36,7 +36,7 @@ export default function GestureToggle() {
         onClick={() => (isOn ? stop() : start())}
         aria-pressed={isOn}
         aria-label={isOn ? "Turn off webcam gesture control" : "Turn on webcam gesture control"}
-        className="grid size-10 shrink-0 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface-glass)] text-text backdrop-blur transition-colors hover:border-accent/60"
+        className="grid size-10 shrink-0 place-items-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface-glass)] text-text backdrop-blur transition-colors hover:border-accent/60"
       >
         {isOn ? (
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -65,7 +65,7 @@ export default function GestureToggle() {
         createPortal(
           <div
             role="status"
-            className="fixed bottom-6 right-6 z-50 max-w-xs rounded-2xl border border-[var(--border)] bg-[var(--surface-glass)] px-4 py-3 text-sm text-text backdrop-blur-xl"
+            className="fixed bottom-6 right-6 z-50 max-w-xs rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface-glass)] px-4 py-3 text-sm text-text backdrop-blur-xl"
           >
             <p>{STATUS_COPY[status]}</p>
             {status === "active" && (

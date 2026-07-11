@@ -13,7 +13,7 @@ function Row({ icons, reverse }: { icons: typeof STACK_ICONS; reverse?: boolean 
         {doubled.map((icon, i) => (
           <div
             key={`${icon.id}-${i}`}
-            className="grid size-11 shrink-0 place-items-center rounded-xl border border-[var(--border)] bg-[var(--surface)] text-text-muted"
+            className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] text-text-muted"
             title={icon.label}
           >
             <StackIconGlyph icon={icon} className="size-5" />
@@ -28,8 +28,8 @@ export default function Marquee() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-16 text-center">
       <p className="text-2xl">
-        <span className="font-semibold text-accent">5</span>{" "}
-        <span className="font-semibold">production AI systems shipped</span>
+        <span className="font-mono text-3xl text-accent">5</span>{" "}
+        <span className="font-semibold tracking-tight">production AI systems shipped</span>
       </p>
       <div className="mt-8 flex flex-col gap-4">
         <Row icons={ROW_A} />

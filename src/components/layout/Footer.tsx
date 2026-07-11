@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer className="flex justify-center px-4 pb-10 pt-16" aria-label="Site footer">
-      <div className="flex flex-wrap items-center justify-center gap-1 rounded-full border border-[var(--border)] bg-[var(--surface-glass)] px-2 py-2 text-sm backdrop-blur-xl">
+      <div className="flex flex-wrap items-center justify-center gap-1 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface-glass)] px-2 py-2 text-sm backdrop-blur-xl">
         {FOOTER_LINKS.map((link) => (
           <a
             key={link.label}

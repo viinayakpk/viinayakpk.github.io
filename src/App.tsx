@@ -5,7 +5,7 @@ import Hero from "./components/hero/Hero";
 import TechIconField from "./components/tech-field/TechIconField";
 import Marquee from "./components/marquee/Marquee";
 import ProjectGrid from "./components/projects/ProjectGrid";
-import RagLoopSection from "./components/rag-loop/RagLoopSection";
+import ArchitectureSection from "./components/architecture/ArchitectureSection";
 import Terminal from "./components/terminal/Terminal";
 import TerminalHint from "./components/terminal/TerminalHint";
 
@@ -19,7 +19,7 @@ export default function App() {
         <TechIconField />
         <Marquee />
         <ProjectGrid />
-        <RagLoopSection />
+        <ArchitectureSection />
       </main>
       <Footer />
       <Terminal />

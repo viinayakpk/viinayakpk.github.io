@@ -42,7 +42,7 @@ export default function TechIconField() {
     >
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
         <p className="tiny-label font-mono text-xs uppercase tracking-[0.3em] text-accent">Working stack</p>
-        <h2 id="stack-title" className="mt-2 max-w-md text-2xl font-semibold sm:text-3xl">
+        <h2 id="stack-title" className="display-heading mt-2 max-w-md text-3xl sm:text-4xl">
           The tools behind the claims.
         </h2>
       </div>
@@ -53,7 +53,7 @@ export default function TechIconField() {
         return (
           <div
             key={icon.id}
-            className="tech-icon absolute grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl border border-[var(--border)] bg-[var(--surface)] text-text-muted shadow-sm transition-colors hover:text-accent"
+            className="tech-icon absolute grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] text-text-muted shadow-sm transition-colors hover:border-accent/60 hover:text-accent"
             style={{
               left: `${point.xPct}%`,
               top: `${point.yPct}%`,

@@ -9,7 +9,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <Wrapper
       {...linkProps}
-      className="group flex flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors hover:border-accent/50"
+      className="group flex flex-col gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] p-5 transition-all hover:-translate-y-1 hover:border-accent/50"
     >
       <div className="flex items-start justify-between gap-2">
         <h3 className="font-medium text-text">{project.title}</h3>
@@ -33,12 +33,12 @@ export default function ProjectCard({ project }: { project: Project }) {
       <p className="text-sm text-text-muted">{project.description}</p>
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
         {project.meta && (
-          <span className="rounded-full bg-accent/15 px-2.5 py-1 font-mono text-xs text-accent">
+          <span className="rounded-[var(--radius-sm)] bg-accent/15 px-2.5 py-1 font-mono text-xs text-accent">
             {project.meta}
           </span>
         )}
         {project.stack.map((tech) => (
-          <span key={tech} className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-text-muted">
+          <span key={tech} className="rounded-[var(--radius-sm)] border border-[var(--border)] px-2.5 py-1 text-xs text-text-muted">
             {tech}
           </span>
         ))}
