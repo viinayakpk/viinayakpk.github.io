@@ -1,0 +1,26 @@
+.track {
+  display: flex;
+  width: max-content;
+  gap: 2rem;
+  animation: scroll 34s linear infinite;
+}
+
+.trackReverse {
+  animation-direction: reverse;
+  animation-duration: 40s;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
