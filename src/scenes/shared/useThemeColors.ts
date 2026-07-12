@@ -3,10 +3,17 @@ import { useEffect, useState } from "react";
 export interface ThemeColors {
   bg: string;
   bgElevated: string;
+  /**
+   * Scenes need this to pick a blend mode: additive blending only reads as
+   * "glow" against a dark backdrop. On the light theme it adds toward white and
+   * the geometry vanishes, so light-theme scenes must blend normally instead.
+   */
+  isDark: boolean;
 }
 
-const DARK: ThemeColors = { bg: "#08090d", bgElevated: "#141225" };
-const LIGHT: ThemeColors = { bg: "#f7f7fb", bgElevated: "#ffffff" };
+// Kept in lockstep with --bg / --bg-elevated in tokens.css.
+const DARK: ThemeColors = { bg: "#14100d", bgElevated: "#1c1611", isDark: true };
+const LIGHT: ThemeColors = { bg: "#fff8f4", bgElevated: "#fffbf8", isDark: false };
 
 function readTheme(): ThemeColors {
   if (typeof document === "undefined") return DARK;

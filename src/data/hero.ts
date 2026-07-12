@@ -1,6 +1,14 @@
 export const HERO_ROLES = [
-  { role: "AI Systems Engineer.", bio: "Building clinical AI assistants and adaptive RAG pipelines at Monidor Oy." },
-  { role: "Robotics Engineer.", bio: "MSc in Artificial Intelligence & Robotics — surgical robotics simulation at TU Chemnitz." },
-  { role: "LLM Engineer.", bio: "Fine-tunes multilingual transformers (XLM-RoBERTa) for real clinical workflows." },
-  { role: "Agentic Coder.", bio: "Runs Codex, Claude Code, and local models as tools in a controlled engineering loop." },
+  {
+    role: "Agentic AI",
+    bio: "Architecting multi-agent clinical AI systems and autonomous orchestration pipelines at Monidor Oy.",
+  },
+  {
+    role: "Multi-Agent",
+    bio: "Building graph-based agent workflows: planners, retrievers, critics, and evaluators that reason together.",
+  },
+  {
+    role: "LLM Automation",
+    bio: "Designing agentic dispatchers, hybrid RAG pipelines, and CI-style quality gates that keep answers honest.",
+  },
 ] as const;

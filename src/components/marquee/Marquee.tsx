@@ -13,10 +13,11 @@ function Row({ icons, reverse }: { icons: typeof STACK_ICONS; reverse?: boolean 
         {doubled.map((icon, i) => (
           <div
             key={`${icon.id}-${i}`}
-            className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] text-text-muted"
+            className="grid size-16 shrink-0 place-items-center rounded-2xl"
+            style={{ background: icon.bg, color: icon.fg }}
             title={icon.label}
           >
-            <StackIconGlyph icon={icon} className="size-5" />
+            <StackIconGlyph icon={icon} className="size-8" />
           </div>
         ))}
       </div>
@@ -27,11 +28,7 @@ function Row({ icons, reverse }: { icons: typeof STACK_ICONS; reverse?: boolean 
 export default function Marquee() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-16 text-center">
-      <p className="text-2xl">
-        <span className="font-mono text-3xl text-accent">5</span>{" "}
-        <span className="font-semibold tracking-tight">production AI systems shipped</span>
-      </p>
-      <div className="mt-8 flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <Row icons={ROW_A} />
         <Row icons={ROW_B} reverse />
       </div>

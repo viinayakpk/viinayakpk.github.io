@@ -1,3 +1,4 @@
+import { ArrowUpRight, GithubLogo } from "@phosphor-icons/react";
 import type { Project } from "@/data/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -9,39 +10,32 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <Wrapper
       {...linkProps}
-      className="group flex flex-col gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] p-5 transition-all hover:-translate-y-1 hover:border-accent/50"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] transition-all hover:-translate-y-1 hover:shadow-lg"
     >
-      <div className="flex items-start justify-between gap-2">
-        <h3 className="font-medium text-text">{project.title}</h3>
-        {project.href && (
-          <svg
-            viewBox="0 0 24 24"
-            className="mt-0.5 size-4 shrink-0 text-text-muted transition-colors group-hover:text-accent"
-            aria-hidden="true"
-          >
-            <path
-              d="M18 13v6a2 2 0 01-2 2H6a2 2 0 01-2-2V9a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        )}
-      </div>
-      <p className="text-sm text-text-muted">{project.description}</p>
-      <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
+      <div className={`relative flex aspect-video w-full items-end bg-gradient-to-br p-4 ${project.gradient ?? "from-[#111111] to-[#2a78d6]"}`}>
+        <h3 className="text-lg font-semibold leading-tight text-white drop-shadow-sm">{project.title}</h3>
         {project.meta && (
-          <span className="rounded-[var(--radius-sm)] bg-accent/15 px-2.5 py-1 font-mono text-xs text-accent">
+          <span className="absolute right-3 top-3 rounded-full bg-white/20 px-2.5 py-1 text-xs font-medium text-white backdrop-blur">
             {project.meta}
           </span>
         )}
-        {project.stack.map((tech) => (
-          <span key={tech} className="rounded-[var(--radius-sm)] border border-[var(--border)] px-2.5 py-1 text-xs text-text-muted">
-            {tech}
-          </span>
-        ))}
+      </div>
+      <div className="flex flex-1 flex-col gap-3 p-4">
+        <p className="text-sm leading-relaxed text-text-muted">{project.description}</p>
+        <div className="mt-auto flex items-center justify-between gap-2 pt-1">
+          <div className="flex flex-wrap gap-1.5">
+            {project.stack.slice(0, 3).map((tech) => (
+              <span key={tech} className="rounded-full border border-[var(--border)] px-2 py-0.5 text-[11px] text-text-muted">
+                {tech}
+              </span>
+            ))}
+          </div>
+          {project.href ? (
+            <GithubLogo weight="fill" className="size-4 shrink-0 text-text-muted transition-colors group-hover:text-accent" aria-hidden="true" />
+          ) : (
+            <ArrowUpRight weight="bold" className="size-4 shrink-0 text-text-quiet" aria-hidden="true" />
+          )}
+        </div>
       </div>
     </Wrapper>
   );
