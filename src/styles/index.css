@@ -459,3 +459,126 @@ canvas {
     font-size: 0.56rem;
   }
 }
+
+/*
+ * The agent architecture diagram.
+ *
+ * No card, no border, no surface. It sits directly on the page background, which is what
+ * makes it read as part of the site rather than as a screenshot pasted into it. The
+ * `planes` are the only structure, and they are deliberately almost invisible — a
+ * hairline and a whisper of fill. If you can clearly SEE the bands, they are too strong;
+ * their job is to group, not to contain.
+ */
+.arch {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.arch__svg {
+  width: 100%;
+  height: auto;
+  max-width: 780px;
+  overflow: visible;
+}
+
+/*
+ * On desktop the diagram is STICKY, so its HEIGHT is the scarce resource, not its width.
+ * Sizing by height keeps the whole architecture on screen at once — right down to the
+ * output guardrail and the cited answer — while you read the beats beside it. Without
+ * this, thirteen tiers simply run off the bottom of their own panel and the payoff is
+ * never visible.
+ *
+ * Deliberately NOT applied on mobile: there the diagram is a tall poster, read
+ * top-to-bottom in normal flow, and constraining its height would crush the type back
+ * into the unreadable smudge this whole redesign exists to escape.
+ */
+@media (min-width: 1024px) {
+  .arch__svg {
+    width: auto;
+    max-width: 100%;
+    height: min(calc(100svh - 7rem), 940px);
+  }
+}
+
+.arch__plane {
+  fill: var(--accent);
+  fill-opacity: 0.022;
+  stroke: var(--border);
+  stroke-width: 0.8;
+}
+
+.arch__plane-label {
+  fill: var(--text-quiet);
+  font-family: var(--font-mono);
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+}
+
+.arch__label {
+  fill: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.arch__detail {
+  /* --text-muted, not --text-quiet. At 9px the quiet tier is barely present at all, and
+     this line is the one carrying the actual proof — FAISS, RAGAS, MCP, cross-encoder.
+     It is the difference between a shape diagram and a real system. */
+  fill: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.arch__node,
+.arch__edge {
+  transition: opacity 600ms ease;
+}
+
+/*
+ * The current in the wire.
+ *
+ * A dashed overlay whose offset animates, so live edges show a direction of travel. This
+ * is the cheapest possible way to make a static diagram feel like a running system — no
+ * canvas, no JS per frame, just a stroke the GPU can animate on its own thread.
+ */
+.arch__flow {
+  stroke-dasharray: 1 13;
+  stroke-linecap: round;
+  opacity: 0.85;
+  animation: arch-flow 1.4s linear infinite;
+}
+
+@keyframes arch-flow {
+  from {
+    stroke-dashoffset: 28;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.arch__halo {
+  animation: arch-pulse 2.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes arch-pulse {
+  0%,
+  100% {
+    transform: scale(0.86);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arch__flow,
+  .arch__halo {
+    animation: none;
+  }
+}
