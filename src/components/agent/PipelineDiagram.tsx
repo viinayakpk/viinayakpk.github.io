@@ -193,20 +193,31 @@ export default function PipelineDiagram({ activeStage }: PipelineDiagramProps) {
             d = `M ${a.x} ${a.y} C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${b.y}`;
           }
 
+          // The edge the playhead is travelling along right now. Thicker, brighter, and
+          // its current runs faster — so as you scroll, you can literally watch the work
+          // move from one stage to the next.
+          const live = focused(link.stage) && !link.feedback;
+
           return (
             <g key={`${link.source}-${link.target}`}>
               <path
                 d={d}
                 fill="none"
                 stroke={KIND_COLOR[from.kind]}
-                strokeWidth={link.feedback ? 1 : 1.3}
+                strokeWidth={live ? 2.2 : link.feedback ? 1 : 1.3}
                 strokeDasharray={link.feedback ? "3 4" : undefined}
-                opacity={on ? (link.feedback ? 0.5 : 0.42) : 0.14}
+                opacity={on ? (live ? 0.8 : link.feedback ? 0.5 : 0.38) : 0.12}
                 className="arch__edge"
               />
               {/* The current, running along the wire. Only on live edges. */}
               {on && !link.feedback && (
-                <path d={d} fill="none" stroke={KIND_COLOR[from.kind]} strokeWidth={1.9} className="arch__flow" />
+                <path
+                  d={d}
+                  fill="none"
+                  stroke={KIND_COLOR[from.kind]}
+                  strokeWidth={live ? 3 : 1.9}
+                  className={`arch__flow${live ? " arch__flow--live" : ""}`}
+                />
               )}
             </g>
           );
@@ -222,21 +233,38 @@ export default function PipelineDiagram({ activeStage }: PipelineDiagramProps) {
           const lines = wrapText(n.label, l.wrap);
           const details = wrapText(n.detail, l.wrapDetail);
           const labelStep = l.fontLabel + 1.5;
-          const detailTop = y + r + 13 + lines.length * labelStep;
+
+          /*
+           * The moving highlight. The stage the playhead is on swells to ~1.6x and lifts
+           * its label; everything else sits back. This is what makes the path FOLLOWABLE —
+           * without it the diagram just fades in stage by stage and you cannot see where
+           * the work actually travelled. The scale lives on an inner <g> so it grows about
+           * the node's own centre, and the label stays at a fixed size (a scaled label
+           * would blur and, worse, would start colliding with its neighbours).
+           */
+          const scale = isFocus ? 1.6 : 1;
+          const labelTop = r * scale + 13;
+          const detailTop = labelTop + lines.length * labelStep;
 
           return (
-            <g key={n.id} className="arch__node" opacity={on ? 1 : 0.34}>
-              {isFocus && (
-                <circle cx={x} cy={y} r={r + 11} fill={color} opacity={0.13} className="arch__halo" />
-              )}
-              <circle cx={x} cy={y} r={r + 4.5} fill="none" stroke={color} strokeWidth={0.9} opacity={isFocus ? 0.75 : 0.28} />
-              <circle cx={x} cy={y} r={r} fill={color} />
+            <g
+              key={n.id}
+              className={`arch__node${isFocus ? " arch__node--focus" : ""}`}
+              transform={`translate(${x} ${y})`}
+              opacity={on ? 1 : 0.3}
+            >
+              {isFocus && <circle r={r + 13} fill={color} opacity={0.14} className="arch__halo" />}
+
+              {/* Only the MARK scales. The type does not. */}
+              <g className="arch__mark" style={{ transform: `scale(${scale})` }}>
+                <circle r={r + 4.5} fill="none" stroke={color} strokeWidth={0.9} opacity={isFocus ? 0.85 : 0.28} />
+                <circle r={r} fill={color} />
+              </g>
 
               {lines.map((line, i) => (
                 <text
                   key={line}
-                  x={x}
-                  y={y + r + 13 + i * labelStep}
+                  y={labelTop + i * labelStep}
                   textAnchor="middle"
                   className="arch__label"
                   style={{ fontSize: l.fontLabel }}
@@ -248,7 +276,6 @@ export default function PipelineDiagram({ activeStage }: PipelineDiagramProps) {
               {details.map((line, i) => (
                 <text
                   key={line}
-                  x={x}
                   y={detailTop + i * (l.fontDetail + 1.5)}
                   textAnchor="middle"
                   className="arch__detail"

@@ -501,11 +501,21 @@ canvas {
   }
 }
 
+/*
+ * The planes have NO FILL. None.
+ *
+ * A 2% tint sounds like nothing, but the page behind it is a warm aurora gradient, not a
+ * flat colour — so even a whisper of fill painted a visible rectangle over it, and the
+ * diagram went straight back to looking like a panel sitting ON the page rather than
+ * living IN it. The bands now exist only as a hairline and a label: enough to group the
+ * tiers, not enough to be a surface.
+ */
 .arch__plane {
-  fill: var(--accent);
-  fill-opacity: 0.022;
+  fill: none;
   stroke: var(--border);
   stroke-width: 0.8;
+  stroke-dasharray: 2 5;
+  opacity: 0.5;
 }
 
 .arch__plane-label {
@@ -532,7 +542,52 @@ canvas {
 
 .arch__node,
 .arch__edge {
-  transition: opacity 600ms ease;
+  transition:
+    opacity 600ms ease,
+    stroke-width 400ms ease;
+}
+
+/*
+ * The moving highlight — the thing that lets you FOLLOW the work through the system
+ * instead of just watching stages fade in.
+ *
+ * The overshoot in this curve is doing real work: the node swells slightly past its
+ * target and settles back, which reads as the stage being *arrived at* rather than merely
+ * turned on. Without the overshoot it looks like a CSS hover state; with it, it looks
+ * like something landed.
+ */
+.arch__mark {
+  /*
+   * `transform-box: fill-box` is REQUIRED, not tidiness.
+   *
+   * On an SVG element, transform-origin resolves against the *view-box* by default — so
+   * `center` means the centre of the whole 780x940 diagram, not the centre of this node.
+   * Scaling the focused mark about that point flung it clear across the canvas: the four
+   * data-plane nodes rendered as stray circles floating in the top-left corner, nowhere
+   * near the wires they belong to. fill-box rebinds the origin to the element's own
+   * bounding box, which is what every mental model of `scale()` assumes it already does.
+   */
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 520ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* The focused stage's label steps forward too — full text colour, and the tech detail
+   under it comes up out of the muted tier. */
+.arch__node--focus .arch__label {
+  fill: var(--accent);
+}
+
+.arch__node--focus .arch__detail {
+  fill: var(--text);
+  opacity: 0.9;
+}
+
+.arch__label,
+.arch__detail {
+  transition:
+    fill 400ms ease,
+    opacity 400ms ease;
 }
 
 /*
@@ -547,6 +602,14 @@ canvas {
   stroke-linecap: round;
   opacity: 0.85;
   animation: arch-flow 1.4s linear infinite;
+}
+
+/* The edge the playhead is on right now: its current runs harder and faster, so the
+   movement from one stage to the next is something you can actually watch happen. */
+.arch__flow--live {
+  stroke-dasharray: 2 10;
+  opacity: 1;
+  animation-duration: 0.7s;
 }
 
 @keyframes arch-flow {
@@ -580,5 +643,11 @@ canvas {
   .arch__flow,
   .arch__halo {
     animation: none;
+  }
+
+  /* The highlight still moves — it has to, it is how you follow the path — it just
+     arrives instantly instead of springing into place. */
+  .arch__mark {
+    transition: none;
   }
 }
