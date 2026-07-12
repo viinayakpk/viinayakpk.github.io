@@ -1,4 +1,4 @@
-export type ProjectCategory = "production" | "research" | "robotics";
+export type ProjectCategory = "agentic" | "research" | "robotics";
 
 export interface Project {
   id: string;
@@ -8,76 +8,75 @@ export interface Project {
   category: ProjectCategory;
   meta?: string;
   href?: string;
+  /** Tailwind gradient classes for the card header. */
+  gradient?: string;
 }
 
-export const PROJECT_CATEGORIES: { id: ProjectCategory | "all"; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "production", label: "Production" },
+export const PROJECT_CATEGORIES: { id: ProjectCategory; label: string }[] = [
+  { id: "agentic", label: "Agentic AI" },
   { id: "research", label: "Research" },
   { id: "robotics", label: "Robotics" },
 ];
 
 export const PROJECTS: Project[] = [
   {
-    id: "clinical-assistant",
-    title: "Multilingual clinical AI assistant",
+    id: "research-agent",
+    title: "Evidence-Grounded Research System",
     description:
-      "Fine-tuned XLM-RoBERTa intent parser, adaptive RAG over patient history, and LLM answer synthesis — clinician responses in 1-3 seconds.",
+      "A graph-based multi-agent workflow: planner, query expansion, multi-source discovery, source-quality scoring, hybrid retrieval, synthesis, critic review, and automated eval agents.",
+    stack: ["LangGraph", "Hybrid RAG", "RAGAS", "LangSmith"],
+    category: "agentic",
+    meta: "9-agent workflow",
+    href: "https://github.com/viinayakpk",
+    gradient: "from-[#2a78d6] to-[#4a3aa7]",
+  },
+  {
+    id: "clinical-ai",
+    title: "Multi-Agent Clinical AI System",
+    description:
+      "Specialised agents for intent classification, patient-history retrieval, and LLM response generation, with an agentic dispatcher that routes queries to the optimal retrieval strategy.",
     stack: ["XLM-RoBERTa", "Adaptive RAG", "Node.js", "PostgreSQL"],
-    category: "production",
-    meta: "1-3s response",
+    category: "agentic",
+    meta: "EU AI Act compliant",
+    gradient: "from-[#1baf7a] to-[#147f84]",
   },
   {
-    id: "rag",
-    title: "rag",
+    id: "internal-agent",
+    title: "Autonomous Internal Knowledge Agent",
     description:
-      "FastAPI + Postgres/pgvector RAG backend with Voyage embeddings/reranking and knowledge-graph extraction via Claude.",
-    stack: ["FastAPI", "pgvector", "Voyage", "Knowledge graphs"],
+      "A LangChain + Mistral-7B agent using CRM, ERP, and documentation retrieval as tools to automate reporting, follow-up, and knowledge lookup - cutting manual effort by 60%+.",
+    stack: ["LangChain", "Mistral-7B", "FAISS"],
+    category: "agentic",
+    meta: "60%+ effort cut",
+    gradient: "from-[#E8672E] to-[#eda100]",
+  },
+  {
+    id: "phishing",
+    title: "Explainable Phishing Detection",
+    description:
+      "A DistilBERT + SHAP pipeline that classifies suspicious text and surfaces model predictions for end users, deployed as a FastAPI microservice with MLflow tracking.",
+    stack: ["DistilBERT", "SHAP", "FastAPI", "MLflow"],
     category: "research",
-    href: "https://github.com/viinayakpk/rag",
-  },
-  {
-    id: "tree-extraction",
-    title: "Tree-Extracton-pipeline",
-    description:
-      "Geometry-aware PDF parsing into structured chunks, extracted via LLM (DeepSeek) with confidence scoring and a golden eval set.",
-    stack: ["DeepSeek", "PDF parsing", "Eval harness"],
-    category: "production",
-    href: "https://github.com/viinayakpk/Tree-Extracton-pipeline",
-  },
-  {
-    id: "email-classification",
-    title: "LLM-Email-Classification-Explainability",
-    description:
-      "DistilBERT phishing classifier with SHAP token-level explainability, deployed as a FastAPI service with Docker.",
-    stack: ["DistilBERT", "SHAP", "FastAPI", "Docker"],
-    category: "research",
-    meta: "92% F1",
-    href: "https://github.com/viinayakpk/LLM-Email-Classification-Explainability",
-  },
-  {
-    id: "surgical-robotics",
-    title: "Surgical robotics simulation",
-    description:
-      "Gesture-based lamp control and a multi-joint robotic arm prototype for an EU-funded human-robot collaboration project at TU Chemnitz.",
-    stack: ["ROS2", "MediaPipe", "Gazebo", "Unity3D", "RViz"],
-    category: "robotics",
+    href: "https://github.com/viinayakpk",
+    gradient: "from-[#4a3aa7] to-[#2a78d6]",
   },
   {
     id: "thesis",
-    title: "Banana leaf disease detection",
+    title: "Banana Leaf Disease Detection",
     description:
-      "Hybrid CNN-LSTM architecture combining spatial and temporal features — 94.5% test accuracy, outperforming standalone CNN baselines.",
+      "A hybrid CNN-LSTM model combining spatial and temporal features for Sigatoka and Xanthomonas classification - 94.5% test accuracy, outperforming standalone CNN baselines.",
     stack: ["CNN-LSTM", "PyTorch"],
     category: "research",
     meta: "94.5% accuracy",
+    gradient: "from-[#008300] to-[#1baf7a]",
   },
   {
-    id: "ai-and-robotics",
-    title: "ai-and-robotics",
-    description: "Point cloud and mesh reconstruction experiments (Poisson surface reconstruction).",
-    stack: ["Point clouds", "Mesh reconstruction"],
+    id: "surgical-robotics",
+    title: "Surgical Robotics Simulation",
+    description:
+      "Perception-to-action agent demos for surgical lamp and robot control using a full sense-decide-act loop, plus a multi-joint robotic arm prototype for an EU-funded project.",
+    stack: ["ROS2", "MediaPipe", "Gazebo", "Unity3D"],
     category: "robotics",
-    href: "https://github.com/viinayakpk/ai-and-robotics",
+    gradient: "from-[#111111] to-[#4a3aa7]",
   },
 ];

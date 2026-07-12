@@ -1,9 +1,9 @@
 import { useTerminalStore } from "@/store/terminalStore";
 
 const FOOTER_LINKS = [
-  { href: "https://linkedin.com/in/vinayakparoononkooloth", label: "LinkedIn" },
-  { href: "https://github.com/viinayakpk", label: "GitHub" },
-  { href: "mailto:vinayakparoononkooloth@gmail.com", label: "Email" },
+  { href: "https://linkedin.com/in/vinayakparoononkooloth", label: "LinkedIn." },
+  { href: "https://github.com/viinayakpk", label: "Github." },
+  { href: "mailto:vinayakparoononkooloth@gmail.com", label: "Email." },
   { href: "/llms.txt", label: "llms.txt" },
 ];
 

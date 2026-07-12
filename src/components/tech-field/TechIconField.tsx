@@ -41,9 +41,10 @@ export default function TechIconField() {
       aria-labelledby="stack-title"
     >
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
-        <p className="tiny-label font-mono text-xs uppercase tracking-[0.3em] text-accent">Working stack</p>
-        <h2 id="stack-title" className="display-heading mt-2 max-w-md text-3xl sm:text-4xl">
-          The tools behind the claims.
+        <h2 id="stack-title" className="max-w-md text-xl font-semibold sm:text-2xl">
+          Always Building,
+          <br />
+          Always Growing.
         </h2>
       </div>
 
@@ -53,15 +54,17 @@ export default function TechIconField() {
         return (
           <div
             key={icon.id}
-            className="tech-icon absolute grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] text-text-muted shadow-sm transition-colors hover:border-accent/60 hover:text-accent"
+            className="tech-icon absolute grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl shadow-sm transition-transform hover:scale-105"
             style={{
               left: `${point.xPct}%`,
               top: `${point.yPct}%`,
               transform: `translate(-50%, -50%) scale(${point.scale})`,
+              background: icon.bg,
+              color: icon.fg,
             }}
             title={icon.label}
           >
-            <StackIconGlyph icon={icon} className="size-6" />
+            <StackIconGlyph icon={icon} className="size-7" />
           </div>
         );
       })}

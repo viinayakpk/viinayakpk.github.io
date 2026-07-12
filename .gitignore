@@ -7,3 +7,14 @@ stats.html
 public/llms.txt
 public/mediapipe/wasm
 *.tsbuildinfo
+
+# Local tooling / agent session artifacts
+.mcp.json
+.playwright-mcp
+
+# Working notes, research and reference screenshots — local only, not for the public repo
+docs
+scripts/download-clone-assets.mjs
+
+# Stray root copy; the served one is public/resume.pdf
+VINAYAK-PAROONON-KOOLOTH.pdf

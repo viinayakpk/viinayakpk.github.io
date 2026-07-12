@@ -1,40 +1,48 @@
 :root[data-theme="dark"] {
-  --bg: #080a12;
-  --bg-elevated: #111322;
-  --surface: rgba(18, 20, 34, 0.84);
-  --surface-glass: rgba(14, 16, 28, 0.66);
-  --border: rgba(249, 238, 227, 0.14);
-  --border-strong: rgba(255, 155, 88, 0.54);
-  --text: #f5eee5;
-  --text-muted: #ada7b4;
-  --text-quiet: #777485;
-  --accent: #ff9b58;
+  --bg: #14100d;
+  --bg-elevated: #1c1611;
+  --surface: rgba(32, 26, 21, 0.84);
+  --surface-glass: rgba(28, 22, 17, 0.66);
+  --border: rgba(255, 248, 244, 0.12);
+  --border-strong: rgba(232, 103, 46, 0.5);
+  --text: #f7f1ea;
+  --text-muted: #b8ada3;
+  --text-quiet: #8a7f77;
+  --accent: #e8672e;
   --accent-2: #a78bfa;
   --accent-cyan: #83e4e5;
   --accent-warm: #f0c1a3;
-  --glow: rgba(255, 155, 88, 0.3);
+  --glow: rgba(232, 103, 46, 0.3);
+  --btn-primary-bg: #f7f1ea;
+  --btn-primary-text: #14100d;
+  --btn-secondary-bg: rgba(255, 248, 244, 0.1);
+  --btn-secondary-text: #f7f1ea;
 }
 
 :root[data-theme="light"] {
-  --bg: #fff7ef;
-  --bg-elevated: #fffaf4;
-  --surface: rgba(255, 251, 246, 0.88);
-  --surface-glass: rgba(255, 250, 245, 0.72);
-  --border: rgba(46, 28, 31, 0.14);
-  --border-strong: rgba(202, 83, 38, 0.52);
-  --text: #261b20;
-  --text-muted: #705f67;
-  --text-quiet: #9a858b;
-  --accent: #d4612f;
+  --bg: #fff8f4;
+  --bg-elevated: #fffbf8;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-glass: rgba(255, 252, 249, 0.75);
+  --border: rgba(17, 17, 17, 0.08);
+  --border-strong: rgba(232, 103, 46, 0.45);
+  --text: #111111;
+  --text-muted: #6b6560;
+  --text-quiet: #a39c96;
+  --accent: #e8672e;
   --accent-2: #735ad0;
   --accent-cyan: #147f84;
   --accent-warm: #b94e2b;
-  --glow: rgba(212, 97, 47, 0.24);
+  --glow: rgba(232, 103, 46, 0.22);
+  --btn-primary-bg: #141414;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: #f0f0f0;
+  --btn-secondary-text: #111111;
 }
 
 :root {
-  --font-display: Georgia, "Times New Roman", serif;
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
   --radius-lg: 1rem;
   --radius-md: 0.6rem;
